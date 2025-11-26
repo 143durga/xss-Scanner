@@ -1,0 +1,14 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>XSS Scan Report</title></head><body>
+<h1>XSS Scan Report</h1>
+<table border="1" cellspacing="0" cellpadding="6">
+<tr><th>Method</th><th>URL</th><th>Param</th><th>Context</th><th>Payload</th><th>Snippet</th></tr>
+<tr><td>GET</td><td>http://localhost:5000/echo?q=INJ_ATTRIBUTE-NAME_SXBQ23&amp;id=1</td><td>q</td><td>attribute-name</td><td>INJ_ATTRIBUTE-NAME_SXBQ23</td><td><pre>&lt;div&gt;Search: INJ_ATTRIBUTE-NAME_SXBQ23&lt;/div&gt;&lt;input value=&quot;1&quot;&gt;&lt;div INJ_ATTRIBUTE-NAME_SXB</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/echo?q=INJ_ATTRIBUTE-VALUE_TX5ZYG&amp;id=1</td><td>q</td><td>attribute-value</td><td>INJ_ATTRIBUTE-VALUE_TX5ZYG</td><td><pre>&lt;div&gt;Search: INJ_ATTRIBUTE-VALUE_TX5ZYG&lt;/div&gt;&lt;input value=&quot;1&quot;&gt;&lt;div INJ_ATTRIBUTE-VALUE_TX</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/echo?q=INJ_TEXT_Y58ANV&amp;id=1</td><td>q</td><td>text</td><td>INJ_TEXT_Y58ANV</td><td><pre>&lt;div&gt;Search: INJ_TEXT_Y58ANV&lt;/div&gt;&lt;input value=&quot;1&quot;&gt;&lt;div INJ_TEXT_Y58ANV=&quot;1&quot;&gt;at</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/echo?q=test&amp;id=INJ_ATTRIBUTE-NAME_A04Z3S</td><td>id</td><td>attribute-name</td><td>INJ_ATTRIBUTE-NAME_A04Z3S</td><td><pre>&lt;div&gt;Search: test&lt;/div&gt;&lt;input value=&quot;INJ_ATTRIBUTE-NAME_A04Z3S&quot;&gt;&lt;div test=&quot;1&quot;&gt;attribute-name-sim&lt;/div&gt;</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/echo?q=test&amp;id=INJ_ATTRIBUTE-VALUE_WCACJ1</td><td>id</td><td>attribute-value</td><td>INJ_ATTRIBUTE-VALUE_WCACJ1</td><td><pre>&lt;div&gt;Search: test&lt;/div&gt;&lt;input value=&quot;INJ_ATTRIBUTE-VALUE_WCACJ1&quot;&gt;&lt;div test=&quot;1&quot;&gt;attribute-name-sim&lt;/div&gt;</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/echo?q=test&amp;id=INJ_TEXT_BTJJG4</td><td>id</td><td>text</td><td>INJ_TEXT_BTJJG4</td><td><pre>&lt;div&gt;Search: test&lt;/div&gt;&lt;input value=&quot;INJ_TEXT_BTJJG4&quot;&gt;&lt;div test=&quot;1&quot;&gt;attribute-name-sim&lt;/div&gt;</pre></td></tr>
+
+</table>
+</body></html>

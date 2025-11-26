@@ -1,0 +1,68 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>XSS Scan Report</title></head><body>
+<h1>XSS Scan Report</h1>
+<table border="1" cellspacing="0" cellpadding="6">
+<tr><th>Method</th><th>URL</th><th>Param</th><th>Context</th><th>Payload</th><th>Snippet</th></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>q</td><td>text</td><td>&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</td><td><pre>ml&gt;
+    &lt;body&gt;
+        &lt;p&gt;You searched: &quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;/p&gt;
+        </pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>q</td><td>text</td><td>&lt;img src=x onerror=alert(1)&gt;</td><td><pre>ml&gt;
+    &lt;body&gt;
+        &lt;p&gt;You searched: &lt;img src=x onerror=alert(1)&gt;&lt;/p&gt;
+       </pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>search</td><td>text</td><td>&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</td><td><pre>ou searched: &lt;/p&gt;
+        &lt;input value=&quot;&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&quot;&gt;
+        &lt;d</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>search</td><td>text</td><td>&lt;img src=x onerror=alert(1)&gt;</td><td><pre>ou searched: &lt;/p&gt;
+        &lt;input value=&quot;&lt;img src=x onerror=alert(1)&gt;&quot;&gt;
+        &lt;</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>id</td><td>text</td><td>&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</td><td><pre>&gt;
+        &lt;input value=&quot;&quot;&gt;
+        &lt;div &quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&gt;Test attribu</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>id</td><td>text</td><td>&lt;img src=x onerror=alert(1)&gt;</td><td><pre>&gt;
+        &lt;input value=&quot;&quot;&gt;
+        &lt;div &lt;img src=x onerror=alert(1)&gt;&gt;Test attrib</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>q</td><td>attribute-value</td><td>&quot;onmouseover=&quot;alert(1)</td><td><pre>ml&gt;
+    &lt;body&gt;
+        &lt;p&gt;You searched: &quot;onmouseover=&quot;alert(1)&lt;/p&gt;
+        &lt;inpu</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>q</td><td>attribute-value</td><td>&#x27; autofocus onfocus=alert(1) &#x27;</td><td><pre>ml&gt;
+    &lt;body&gt;
+        &lt;p&gt;You searched: &#x27; autofocus onfocus=alert(1) &#x27;&lt;/p&gt;
+     </pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>search</td><td>attribute-value</td><td>&quot;onmouseover=&quot;alert(1)</td><td><pre>ou searched: &lt;/p&gt;
+        &lt;input value=&quot;&quot;onmouseover=&quot;alert(1)&quot;&gt;
+        &lt;div &gt;T</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>search</td><td>attribute-value</td><td>&#x27; autofocus onfocus=alert(1) &#x27;</td><td><pre>ou searched: &lt;/p&gt;
+        &lt;input value=&quot;&#x27; autofocus onfocus=alert(1) &#x27;&quot;&gt;
+       </pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>id</td><td>attribute-value</td><td>&quot;onmouseover=&quot;alert(1)</td><td><pre>&gt;
+        &lt;input value=&quot;&quot;&gt;
+        &lt;div &quot;onmouseover=&quot;alert(1)&gt;Test attribute-na</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>id</td><td>attribute-value</td><td>&#x27; autofocus onfocus=alert(1) &#x27;</td><td><pre>&gt;
+        &lt;input value=&quot;&quot;&gt;
+        &lt;div &#x27; autofocus onfocus=alert(1) &#x27;&gt;Test attr</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>q</td><td>attribute-name</td><td>onxxx=alert(1)</td><td><pre>ml&gt;
+    &lt;body&gt;
+        &lt;p&gt;You searched: onxxx=alert(1)&lt;/p&gt;
+        &lt;input value=</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>q</td><td>attribute-name</td><td>onclick=alert(1)</td><td><pre>ml&gt;
+    &lt;body&gt;
+        &lt;p&gt;You searched: onclick=alert(1)&lt;/p&gt;
+        &lt;input valu</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>search</td><td>attribute-name</td><td>onxxx=alert(1)</td><td><pre>ou searched: &lt;/p&gt;
+        &lt;input value=&quot;onxxx=alert(1)&quot;&gt;
+        &lt;div &gt;Test attr</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>search</td><td>attribute-name</td><td>onclick=alert(1)</td><td><pre>ou searched: &lt;/p&gt;
+        &lt;input value=&quot;onclick=alert(1)&quot;&gt;
+        &lt;div &gt;Test at</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>id</td><td>attribute-name</td><td>onxxx=alert(1)</td><td><pre>&gt;
+        &lt;input value=&quot;&quot;&gt;
+        &lt;div onxxx=alert(1)&gt;Test attribute-name&lt;/div&gt;</pre></td></tr>
+<tr><td>GET</td><td>http://localhost:5000/test</td><td>id</td><td>attribute-name</td><td>onclick=alert(1)</td><td><pre>&gt;
+        &lt;input value=&quot;&quot;&gt;
+        &lt;div onclick=alert(1)&gt;Test attribute-name&lt;/di</pre></td></tr>
+
+</table>
+</body></html>
